@@ -1,0 +1,25 @@
+---
+# tasks file for /etc/ansible/roles/filebeat
+#
+- name: Add filebeat repo.
+  template:
+    src: beats.repo
+    dest: /etc/yum.repos.d/beats.repo
+
+- name: Add Elasticsearch GPG key.
+  rpm_key:
+    key: https://packages.elastic.co/GPG-KEY-elasticsearch
+    state: present
+    
+- name: Install Filebeat.
+  yum: name=filebeat state=present
+
+- include: config.yml
+#  when: filebeat_create_config
+
+- name: Ensure Filebeat is started and enabled at boot.
+  service:
+    name: filebeat
+    state: started
+    enabled: yes
+

@@ -1,0 +1,22 @@
+---
+# tasks file for /etc/ansible/roles/nrpe
+
+- name: Install nrpe
+  yum: name=nrpe state=present
+
+- name: Install Nagios plugins
+  yum: name=nagios-plugins state=present
+
+- name: Copy nrpe configuration file
+  template:
+    src: nrpe.cfg
+    dest: /etc/nagios/nrpe.cfg
+- name: Copy Plugins
+  copy: src=files/ dest=/usr/local/nagios/libexec
+    
+
+- name: Make sure that nrpe is started and enabled
+  service:
+    name: nrpe
+    state: started
+    enabled: yes

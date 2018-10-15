@@ -1,0 +1,6 @@
+---
+- hosts: servers1
+  roles:
+  - nrpe
+  become: yes
+

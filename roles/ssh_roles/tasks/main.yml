@@ -1,0 +1,16 @@
+---
+# tasks file for /etc/ansible/roles/ssh_roles
+
+- name: Create user yasmine
+  user:
+    name: yasmine
+#    groups: wheel
+#    append: yes
+
+#- name: Set authorized key
+#  authorized_key:
+#    user: yasmine
+#    state: present
+#    key: "{{ lookup('file', '/home/yasmine/.ssh/id_rsa.pub') }}"
+
+#- name: Set permissions

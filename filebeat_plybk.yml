@@ -1,0 +1,4 @@
+---
+- hosts: servers1
+  roles: 
+  - filebeat
