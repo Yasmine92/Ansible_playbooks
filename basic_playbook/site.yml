@@ -1,6 +1,0 @@
-
-- name: install default packages
-  hosts: servers1
-  user: root
-  roles:
-	-  
